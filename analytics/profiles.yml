@@ -1,0 +1,6 @@
+dagster_dbt_university:  # Creates a profile named dagster_dbt_university
+  target: dev  # Set the default target (data warehouse) for the dagster_dbt_university profile to dev
+  outputs:
+    dev:
+      type: duckdb
+      path: '../{{ env_var("DUCKDB_DATABASE", "data/staging/data.duckdb") }}'  # Sets the path using a dbt macro to reference the DUCKDB_DATABASE environment variable in the project’s .env file. With this, your dbt models will be built in the same DuckDB database as where your Dagster assets are materialized. The DUCKDB_DATABASE environment variable is a relative path from the project’s root directory. For dbt to find it, we prefixed it with ../ to ensure it resolves correctly.

@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw_taxis
+    schema: main
+    tables:
+      - name: zones
+      - name: trips
+    config:
+      meta:
+        dagster:
+          group: dbt_models
